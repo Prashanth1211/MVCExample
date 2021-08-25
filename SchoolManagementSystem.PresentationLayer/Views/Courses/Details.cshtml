@@ -1,0 +1,65 @@
+﻿@model SchoolManagementSystem.PresentationLayer.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Credits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Credits)
+        </dd>
+
+    </dl>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Students</th>
+        <th>Teachers</th>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                @foreach (var student in Model.Students)
+                {
+                    <tr>
+                        <td>@student.FirstName @student.LastName</td>
+                    </tr>
+                }
+            </table>
+        </td>
+
+        <td>
+            <table>
+                @foreach (var staff in Model.Staffs)
+                {
+                    <tr>
+                        <td>@staff.StaffName</td>
+                    </tr>
+                }
+            </table>
+        </td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CourseId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
